@@ -169,7 +169,7 @@ namespace VotingWeb.Controllers
 
         // GET api/appVersion 
         [HttpGet("currentNode")]
-        public async Task<string> GetCurrentNode()
+        public string GetCurrentNode()
         {
             ServiceEventSource.Current.ServiceRequestStart("VotesController.GetCurrentNode");
             return this.serviceContext.NodeContext.NodeName;

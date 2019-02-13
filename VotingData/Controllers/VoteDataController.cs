@@ -102,7 +102,7 @@ namespace VotingData.Controllers
                     result = await votesDictionary.TryRemoveAsync(tx, name);
                     //await ballotDictionary.AddOrUpdateAsync(tx, BALLOTS_CAST_KEY, -1, (key, value) => (value >= deleteVotes.Value ? value - deleteVotes.Value : 0));
                     long ballots = await GetTotalBallotsCast();
-                    await AuditBallot(-1 * (ballots >= deleteVotes.Value ? ballots - deleteVotes.Value : ballots));
+                    await AuditBallot(-1 * (ballots >= deleteVotes.Value ? deleteVotes.Value : ballots));
                     await tx.CommitAsync();
                     ServiceEventSource.Current.Message($"VotingData.Delete end. '{name}' deleted.");
                     return new OkResult();

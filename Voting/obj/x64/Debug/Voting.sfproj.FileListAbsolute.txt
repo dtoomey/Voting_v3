@@ -1,1 +1,2 @@
 C:\Repos\Demos\service-fabric-dotnet-quickstart-master\Voting\obj\x64\Debug\Voting.sfproj.CoreCompileInputs.cache
+C:\Repos\Demos\Voting_v3\Voting\obj\x64\Debug\Voting.sfproj.CoreCompileInputs.cache
