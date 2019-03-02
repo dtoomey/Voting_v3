@@ -1,11 +1,13 @@
 ---
 services: service-fabric
 platforms: dotnet
-author: mikkelhegn
+author: mikkelhegn, dtoomey
 ---
 
-# Service Fabric .NET Quickstart
+# Service Fabric .NET Quickstart - ENHANCED
 This repository contains an quickstart project for [Microsoft Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/). The quickstart project contains a single application with multiple services demonstrating the basic concepts of service communication and use of reliable dictionaries.
+
+THE ORIGINAL CODE HAS BEEN ENHANCED SO THAT IT CAN SERVE AS A DEMONSTRATION OF AN AUTOMATED ROLLBACK WHEN A BUG HAS BEEN INTRODUCED. USE THE INCLUDED "TRUMP" SNIPPET WITHIN THE PUT METHOD OF THE VOTESCONTROLLER.CS FILE TO INTRODUCE THE BUG.
 
 For a guided tour with the quickstart:
 [Service Fabric .NET quickstart](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-dotnet)
