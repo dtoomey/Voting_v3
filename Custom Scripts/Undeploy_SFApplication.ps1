@@ -25,7 +25,7 @@ try {
 	    Connect-ServiceFabricCluster -ConnectionEndpoint $clusterAddress -X509Credential -ServerCertThumbprint $thumb -FindType FindByThumbprint -FindValue $thumb -StoreLocation CurrentUser -StoreName My
     }
  
-    Write-Output Removing application '$imageStorePath' from cluster at '$clusterAddress'...
+    Write-Output "Removing application '$imageStorePath' from cluster at '$clusterAddress'..."
 
     # Remove an application instance
     Remove-ServiceFabricApplication -ApplicationName $appName -Force  #force flag skips prompt for confirmation
