@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VotingData", "VotingData\Vo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Custom Scripts", "Custom Scripts", "{1397FB1F-033D-4E36-A0E3-E071B3F9A7C0}"
 	ProjectSection(SolutionItems) = preProject
-		Custom Scripts\SF_DeployApplication.ps1 = Custom Scripts\SF_DeployApplication.ps1
-		Custom Scripts\SF_UndeployApplication.ps1 = Custom Scripts\SF_UndeployApplication.ps1
+		Custom Scripts\Deploy_SFApplication.ps1 = Custom Scripts\Deploy_SFApplication.ps1
 		Custom Scripts\TrumpCodeSnippet.snippet = Custom Scripts\TrumpCodeSnippet.snippet
+		Custom Scripts\Undeploy_SFApplication.ps1 = Custom Scripts\Undeploy_SFApplication.ps1
 	EndProjectSection
 EndProject
 Global
