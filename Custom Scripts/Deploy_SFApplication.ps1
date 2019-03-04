@@ -14,7 +14,7 @@ param (
     [string] $thumb="YOUR_CERTIFICATE_THUMBPRINT"   # for secured cluster hosted in azure
 )
 
-Write-Output "Deploying application '$imageStorePath' to cluster at '$clusterAddress'..."
+Write-Host "Deploying application '$imageStorePath' to cluster at '$clusterAddress'..."
 
 try {
 
