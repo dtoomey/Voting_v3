@@ -104,16 +104,6 @@ namespace VotingWeb.Controllers
                 };
             }
 
-
-            if (!string.IsNullOrEmpty(name) && name.ToUpper().StartsWith("TRUMP"))
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    await this.httpClient.PutAsync(proxyUrl, putContent);
-                }
-            }
-
-
             // Separately audit the ballot
             if (result.StatusCode == 200)
             {
