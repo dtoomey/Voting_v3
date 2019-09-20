@@ -10,11 +10,12 @@ param (
     [string] $appTypeName = "VotingType",
     [string] $appName = "fabric:/$imageStorePath",
     [string] $appVersion = "1.0.0",
-    [string] $ServerCommonName = "localhost" ,    # for local hosted cluster deployments or “CLUSTER_NAME.REGION.cloudapp.azure.com” for azure
+    [string] $ServerCommonName = "CLUSTER_NAME.REGION.cloudapp.azure.com",   #for azure hosted cluster deployments
+    #[string] $ServerCommonName = "localhost",                               #for local hosted cluster deployments
     [string] $thumb="YOUR_CERTIFICATE_THUMBPRINT"   # for secured cluster hosted in azure
 )
 
-Write-Host "Deploying application '$imageStorePath' to cluster at '$clusterAddress'..."
+Write-Host "Deploying application '$imageStorePath' to cluster at '$ServerCommonName'..."
 
 try {
 
@@ -23,11 +24,11 @@ try {
     # Connect to the Service Fabric cluster  (need certificate for a secured cluster in Azure)
     if($ServerCommonName -eq "localhost")
     {
-	    Connect-ServiceFabricCluster -ConnectionEndpoint $clusterAddress
+	    Connect-ServiceFabricCluster -ConnectionEndpoint $ServerCommonName
     }
     else
     {
-	    Connect-ServiceFabricCluster -ConnectionEndpoint $clusterAddress -X509Credential -ServerCertThumbprint $thumb -FindType FindByThumbprint -FindValue $thumb -StoreLocation CurrentUser -StoreName My
+	    Connect-ServiceFabricCluster -ConnectionEndpoint $($ServerCommonName):19000 -X509Credential -ServerCertThumbprint $thumb -FindType FindByThumbprint -FindValue $thumb -StoreLocation CurrentUser -StoreName My
     }
 
     $imageStoreConnStr = Get-ImageStoreConnectionStringFromClusterManifest -ClusterManifest (Get-ServiceFabricClusterManifest)
