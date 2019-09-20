@@ -7,8 +7,9 @@ param (
     [string] $appTypeName = "VotingType",
     [string] $appName = "fabric:/$imageStorePath",
     [string] $appVersion = "1.0.0",
-    [string] $ServerCommonName = "localhost" ,    # for local hosted cluster deployments or “CLUSTER_NAME.REGION.cloudapp.azure.com” for azure
-    [string] $thumb="YOUR_CERTIFICATE_THUMBPRINT"   # for secured cluster hosted in azure
+    [string] $ServerCommonName = "CLUSTER_NAME.REGION.cloudapp.azure.com",   #for azure hosted cluster deployments
+    [string] #$ServerCommonName = "localhost",                              #for local hosted cluster deployments
+    [string] $thumb="YOUR_CERTIFICATE_THUMBPRINT"   #for secured cluster hosted in azure
 )
 
 try {
@@ -18,11 +19,11 @@ try {
     # Connect to the Service Fabric cluster  (need certificate for a secured cluster in Azure)
     if($ServerCommonName -eq "localhost")
     {
-	    Connect-ServiceFabricCluster $clusterAddress
+	    Connect-ServiceFabricCluster $ServerCommonName
     }
     else
     {
-	    Connect-ServiceFabricCluster -ConnectionEndpoint $clusterAddress -X509Credential -ServerCertThumbprint $thumb -FindType FindByThumbprint -FindValue $thumb -StoreLocation CurrentUser -StoreName My
+	    Connect-ServiceFabricCluster -ConnectionEndpoint "$($ServerCommonName):19000" -KeepAliveIntervalInSec 10 -X509Credential -ServerCommonName $ServerCommonName -ServerCertThumbprint $thumb -FindType FindByThumbprint -FindValue $thumb -StoreLocation CurrentUser -StoreName My
     }
  
     Write-Host "Removing application '$imageStorePath' from cluster at '$clusterAddress'..."
