@@ -94,6 +94,8 @@ namespace VotingWeb.Controllers
             StringContent putContent = new StringContent($"{{ 'name' : '{name}' }}", Encoding.UTF8, "application/json");
             putContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
+            // Insert "trump" snippet here to introduce a bug
+            
             // Record the new vote
             using (HttpResponseMessage response = await this.httpClient.PutAsync(proxyUrl, putContent))
             {
