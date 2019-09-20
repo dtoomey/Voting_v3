@@ -3,7 +3,7 @@
 ###################################################################################################
 
 param (
-    [Parameter(Mandatory=$true, HelpMessage="Enter the path to the folder containing the package to be deployed.")]
+    #[Parameter(Mandatory=$true, HelpMessage="Enter the path to the folder containing the package to be deployed.")]
     [ValidateScript({Test-Path -Path $_ -PathType Container})]
     [string] $path = "C:\Repos\Demos\Voting_v3\Voting\pkg\Debug",     #Set this to the path for your solution output directory
     [string] $imageStorePath = "Voting",
