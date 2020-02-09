@@ -95,13 +95,7 @@ namespace VotingWeb.Controllers
             putContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             // Insert "trump" snippet here to introduce a nasty bug.
-            if (!string.IsNullOrEmpty(name) && name.ToUpper().StartsWith("TRUMP"))
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    await this.httpClient.PutAsync(proxyUrl, putContent);
-                }
-            }
+            
             
             // Record the new vote
             using (HttpResponseMessage response = await this.httpClient.PutAsync(proxyUrl, putContent))
